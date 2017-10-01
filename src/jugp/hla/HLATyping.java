@@ -47,7 +47,11 @@ public class HLATyping extends Application {
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("DNA-HLA");
-        this.primaryStage.getIcons().add(new Image("file:resources/images/dnat_96.ico"));
+        this.primaryStage.getIcons().add(new Image("file:resources/images/dnat_ico96.png"));
+        //this.primaryStage.getIcons().add(new Image("file:dnat_ico96.png"));
+        
+        //System.out.println("End Of The Show!");
+        
         
         // Главное окно
         initmainLayout();
@@ -204,7 +208,7 @@ public class HLATyping extends Application {
     
 
     /**
-     * Открываем окно для Установки настроек 
+     * Открываем окно (общий метод) 
      * 
      */
     public void openForm(String formFXML, String formControllerClassName) {

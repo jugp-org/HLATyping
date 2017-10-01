@@ -1,4 +1,4 @@
-package jugp.hla.view;
+package jugp.hla.controller;
 
 import java.awt.Cursor;
 import java.util.HashMap;

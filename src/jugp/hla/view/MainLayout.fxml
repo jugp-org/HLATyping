@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.input.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -12,9 +13,15 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#menuTest" text="Test aligner!" />
+              <MenuItem mnemonicParsing="false" onAction="#menuTest" text="Test aligner!">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="O" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" onAction="#menuOpen" text="Open..." />
+                  <MenuItem mnemonicParsing="false" onAction="#menuOpen" text="Open...">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="O" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
                   <MenuItem mnemonicParsing="false" onAction="#menuSave" text="Save" />
                   <MenuItem mnemonicParsing="false" onAction="#menuSaveAs" text="Save As..." />
                   <SeparatorMenuItem mnemonicParsing="false" />

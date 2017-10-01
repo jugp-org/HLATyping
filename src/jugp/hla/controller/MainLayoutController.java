@@ -51,14 +51,25 @@ public class MainLayoutController {
 
         // Задаём фильтр расширений
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
-                "XML files (*.xml)", "*.xml");
+                "FASTQ files (*.fastq)", "*.fastq");
         fileChooser.getExtensionFilters().add(extFilter);
 
         // Показываем диалог загрузки файла
         File file = fileChooser.showOpenDialog(mainApp.getPrimaryStage());
-
         if (file != null) {
-//            mainApp.loadPersonDataFromFile(file);
+        	// Загружаем файл
+        	DBConnection dbConnect = new DBConnection();
+      		if (dbConnect.Connect() == 1) {
+      			
+      			
+       			String sqlStr = "exec DNA2_FASTQ.dbo.fastq_data_read @file_name='"+file.getAbsolutePath()+"'";
+       			if (dbConnect.Execute(sqlStr) == false) {
+        			mainApp.showErrorMessage("Ошибка загрузки данных!",dbConnect.error);
+        		}else {
+        			mainApp.showInfoMessage("Файл загружен!");
+        		}
+       		}
+      		dbConnect.Close();
         }
     }
 
@@ -165,14 +176,9 @@ public class MainLayoutController {
 
         // Показываем диалог загрузки файла
         File file = fileChooser.showOpenDialog(mainApp.getPrimaryStage());
-
         if (file != null) {
-        	//HLADatabaseLoader hlaLoader = new HLADatabaseLoader();
-        	//hlaLoader.LoadXMLData(file);
-        	
-        	//private DBConnection dbConnect;
+        	// Загружаем файл
         	DBConnection dbConnect = new DBConnection();
-            
       		if (dbConnect.Connect() == 1) {
        			String sqlStr = "exec hla2_XML_read @file_name='"+file.getAbsolutePath()+"'";
        			if (dbConnect.Execute(sqlStr) == false) {
@@ -181,6 +187,7 @@ public class MainLayoutController {
         			mainApp.showInfoMessage("Файл загружен!");
         		}
        		}
+      		dbConnect.Close();
         }
     }
     
